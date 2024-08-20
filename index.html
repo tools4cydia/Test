@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض أدوات deb</title>
+    <style>
+        #toolsList {
+            margin-top: 20px;
+        }
+        .tool {
+            margin-bottom: 10px;
+        }
+        .tool img {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+        .tool span {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <button id="showToolsBtn">عرض الأدوات</button>
+    <div id="toolsList"></div>
 
+    <script>
+        document.getElementById('showToolsBtn').addEventListener('click', function() {
+            fetch('https://your-server-endpoint/api/get-deb-tools')
+                .then(response => response.json())
+                .then(tools => {
+                    const toolsList = document.getElementById('toolsList');
+                    toolsList.innerHTML = ''; // تفريغ المحتوى الحالي
+
+                    tools.forEach(tool => {
+                        const toolElement = document.createElement('div');
+                        toolElement.className = 'tool';
+                        toolElement.innerHTML = `<img src="${tool.icon}" alt="Icon"> <span>${tool.name}</span>`;
+                        toolsList.appendChild(toolElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching tools:', error);
+                });
+        });
+    </script>
+</body>
+</html>

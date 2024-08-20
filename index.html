@@ -28,17 +28,19 @@
 
     <script>
         document.getElementById('showToolsBtn').addEventListener('click', function() {
-            fetch('https://github.com/roothide/roothide.github.io/tree/main/debfiles')
+            fetch('https://api.github.com/repos/roothide/roothide.github.io/contents/debfiles')
                 .then(response => response.json())
-                .then(tools => {
+                .then(data => {
                     const toolsList = document.getElementById('toolsList');
                     toolsList.innerHTML = ''; // تفريغ المحتوى الحالي
 
-                    tools.forEach(tool => {
-                        const toolElement = document.createElement('div');
-                        toolElement.className = 'tool';
-                        toolElement.innerHTML = `<img src="${tool.icon}" alt="Icon"> <span>${tool.name}</span>`;
-                        toolsList.appendChild(toolElement);
+                    data.forEach(item => {
+                        if(item.name.endsWith('.deb')) {
+                            const toolElement = document.createElement('div');
+                            toolElement.className = 'tool';
+                            toolElement.innerHTML = `<span>${item.name}</span>`;
+                            toolsList.appendChild(toolElement);
+                        }
                     });
                 })
                 .catch(error => {

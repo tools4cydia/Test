@@ -28,8 +28,7 @@
 
     <script>
         document.getElementById('showToolsBtn').addEventListener('click', function() {
-            fetch('https://github.com/roothide/roothide.github.io/tree/main/debfiles
-/api/get-deb-tools')
+            fetch('https://github.com/roothide/roothide.github.io/tree/main/debfiles')
                 .then(response => response.json())
                 .then(tools => {
                     const toolsList = document.getElementById('toolsList');

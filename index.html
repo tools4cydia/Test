@@ -3,53 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض أدوات deb</title>
+    <title>قائمة الأدوات</title>
     <style>
-        #toolsList {
-            margin-top: 20px;
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
         }
-        .tool {
-            margin-bottom: 10px;
+        .tool-list {
+            list-style-type: none;
+            padding: 0;
         }
-        .tool img {
-            width: 32px;
-            height: 32px;
-            vertical-align: middle;
+        .tool-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
         }
-        .tool span {
-            margin-left: 10px;
-            font-size: 18px;
+        .tool-list li span {
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <button id="showToolsBtn">عرض الأدوات</button>
-    <div id="toolsList"></div>
-
-    <script>
-        document.getElementById('showToolsBtn').addEventListener('click', function() {
-            fetch('https://api.github.com/repos/roothide/roothide.github.io/contents/debfiles')
-                .then(response => response.json())
-                .then(data => {
-                    const toolsList = document.getElementById('toolsList');
-                    toolsList.innerHTML = ''; // تفريغ المحتوى الحالي
-
-                    data.forEach(item => {
-                        if(item.name.endsWith('.deb')) {
-                            // استخراج اسم الأداة من اسم الملف
-                            const toolName = item.name.replace(/_/g, ' ').replace('.deb', '');
-                            
-                            const toolElement = document.createElement('div');
-                            toolElement.className = 'tool';
-                            toolElement.innerHTML = `<span>${toolName}</span> <span>(${item.name})</span>`;
-                            toolsList.appendChild(toolElement);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching tools:', error);
-                });
-        });
-    </script>
+    <h1>قائمة الأدوات</h1>
+    <ul class="tool-list">
+        <li><span>3DAppVersionSpoofer:</span> الإصدار 1.3</li>
+        <li><span>ActionBar:</span> الإصدار 1.1-2</li>
+        <li><span>AltList:</span> الإصدار 1.0.10-3</li>
+        <li><span>Apple File Conduit "2" (RootHide):</span> الإصدار 1.1.7-21</li>
+        <li><span>AppData:</span> الإصدار 1.3.6</li>
+        <li><span>BackgrounderAction15 CCSupport:</span> الإصدار 0.1.0</li>
+        <li><span>CC On & Off:</span> الإصدار 1.1.0</li>
+        <li><span>CCSupport:</span> الإصدار 1.3.10-2-2+debug</li>
+        <li><span>Choicy:</span> الإصدار 1.4.10-7-2</li>
+        <li><span>ColorMyBattery:</span> الإصدار 1.3.4</li>
+        <li><span>Comet:</span> الإصدار 1.0.5</li>
+        <li><span>CrossOverIPC:</span> الإصدار 1.1-1+debug</li>
+        <li><span>DockPad:</span> الإصدار 1.1</li>
+        <li><span>EZSwipe:</span> الإصدار 1.1.1-4+debug</li>
+        <li><span>ElleKit:</span> الإصدار 1.1.3</li>
+        <li><span>FIVEIconDock:</span> الإصدار 1</li>
+        <li><span>FLEXing:</span> الإصدار 1.5.0-9+debug</li>
+        <li><span>Filza File Manager 64-bit:</span> الإصدار 4.0.1-4~roothide</li>
+        <li><span>IPA Ranger:</span> الإصدار 1.8</li>
+        <li><span>NewTab:</span> الإصدار 1.1</li>
+        <li><span>NoDockGround:</span> الإصدار 1.0.6</li>
+        <li><span>NotRecording:</span> الإصدار 1.1.1-2+debug</li>
+        <li><span>Orion (iOS 14-17):</span> الإصدار 1.0.1-3+debug</li>
+        <li><span>PatchLoader:</span> الإصدار 0.0.5-2</li>
+        <li><span>PostBox:</span> الإصدار 0.8.1-4</li>
+        <li><span>RecordAnywhere:</span> الإصدار 1.1.0</li>
+        <li><span>Renet - Network Fix:</span> الإصدار 1.2.1</li>
+        <li><span>RootHide Manager:</span> الإصدار 1.0-2+debug</li>
+        <li><span>RootHide Patcher:</span> الإصدار 1.8-1+debug</li>
+        <li><span>ShowTouch:</span> الإصدار 1.0.5</li>
+        <li><span>Swiped:</span> الإصدار 1.0-6+debug</li>
+        <li><span>Uptime:</span> الإصدار 1.0.1</li>
+        <li><span>White Point Module:</span> الإصدار 1.2.2-1+debug</li>
+    </ul>
 </body>
 </html>

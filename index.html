@@ -36,9 +36,12 @@
 
                     data.forEach(item => {
                         if(item.name.endsWith('.deb')) {
+                            // استخراج اسم الأداة من اسم الملف
+                            const toolName = item.name.replace(/_/g, ' ').replace('.deb', '');
+                            
                             const toolElement = document.createElement('div');
                             toolElement.className = 'tool';
-                            toolElement.innerHTML = `<span>${item.name}</span>`;
+                            toolElement.innerHTML = `<span>${toolName}</span> <span>(${item.name})</span>`;
                             toolsList.appendChild(toolElement);
                         }
                     });

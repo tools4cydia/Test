@@ -43,6 +43,9 @@
             border-radius: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .tool-list li:hover {
             transform: translateY(-2px);
@@ -52,6 +55,21 @@
             font-weight: bold;
             color: #333;
         }
+        .download-button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -60,57 +78,99 @@
         <input type="text" id="searchInput" placeholder="ابحث عن اسم الأداة...">
     </div>
     <ul class="tool-list" id="toolList">
-        <li><span>3DAppVersionSpoofer:</span> الإصدار 1.3</li>
-        <li><span>ActionBar:</span> الإصدار 1.1-2</li>
-        <li><span>AltList:</span> الإصدار 1.0.10-3</li>
-        <li><span>Apple File Conduit "2" (RootHide):</span> الإصدار 1.1.7-21</li>
-        <li><span>AppData:</span> الإصدار 1.3.6</li>
-        <li><span>BackgrounderAction15 CCSupport:</span> الإصدار 0.1.0</li>
-        <li><span>CC On & Off:</span> الإصدار 1.1.0</li>
-        <li><span>CCSupport:</span> الإصدار 1.3.10-2-2+debug</li>
-        <li><span>Choicy:</span> الإصدار 1.4.10-7-2</li>
-        <li><span>ColorMyBattery:</span> الإصدار 1.3.4</li>
-        <li><span>Comet:</span> الإصدار 1.0.5</li>
-        <li><span>CrossOverIPC:</span> الإصدار 1.1-1+debug</li>
-        <li><span>DockPad:</span> الإصدار 1.1</li>
-        <li><span>EZSwipe:</span> الإصدار 1.1.1-4+debug</li>
-        <li><span>ElleKit:</span> الإصدار 1.1.3</li>
-        <li><span>FIVEIconDock:</span> الإصدار 1</li>
-        <li><span>FLEXing:</span> الإصدار 1.5.0-9+debug</li>
-        <li><span>Filza File Manager 64-bit:</span> الإصدار 4.0.1-4~roothide</li>
-        <li><span>IPA Ranger:</span> الإصدار 1.8</li>
-        <li><span>NewTab:</span> الإصدار 1.1</li>
-        <li><span>NoDockGround:</span> الإصدار 1.0.6</li>
-        <li><span>NotRecording:</span> الإصدار 1.1.1-2+debug</li>
-        <li><span>Orion (iOS 14-17):</span> الإصدار 1.0.1-3+debug</li>
-        <li><span>PatchLoader:</span> الإصدار 0.0.5-2</li>
-        <li><span>PostBox:</span> الإصدار 0.8.1-4</li>
-        <li><span>RecordAnywhere:</span> الإصدار 1.1.0</li>
-        <li><span>Renet - Network Fix:</span> الإصدار 1.2.1</li>
-        <li><span>RootHide Manager:</span> الإصدار 1.0-2+debug</li>
-        <li><span>RootHide Patcher:</span> الإصدار 1.8-1+debug</li>
-        <li><span>ShowTouch:</span> الإصدار 1.0.5</li>
-        <li><span>Swiped:</span> الإصدار 1.0-6+debug</li>
-        <li><span>Uptime:</span> الإصدار 1.0.1</li>
-        <li><span>White Point Module:</span> الإصدار 1.2.2-1+debug</li>
-    </ul>
+        <li>
+            <span>com.afnanahmad.chromahomebarx</span> - الإصدار 0.4 - سورس: BigBoss <bigboss@thebigboss.org>
+            <a href="https://michaelmelita1.github.io/debs/com.afnanahmad.chromahomebarx_0.4_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.ikilledappl3.autofolderclose-rootless</span> - الإصدار 1.1 - سورس: michaelmelita1
+            <a href="https://michaelmelita1.github.io/debs/com.ikilledappl3.autofolderclose_1.1_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.11cam14</span> - الإصدار 0.0.11 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.11cam14_0.0.11_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.11cam15-rootless</span> - الإصدار 0.0.17 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.11cam15_0.0.17_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.betterpad12</span> - الإصدار 0.0.4 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.betterpad12_0.0.4_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.betterpad14</span> - الإصدار 0.0.1 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.betterpad14_0.0.1_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.detectedtext</span> - الإصدار 0.0.2 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.detectedtext_0.0.2_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.detectedtext-rootless</span> - الإصدار 0.0.2 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.detectedtext_0.0.2_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.widebydefault</span> - الإصدار 0.0.2 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.widebydefault_0.0.2_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.michaelmelita1.widebydefault-rootless</span> - الإصدار 0.0.2 - سورس: Michael Melita
+            <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.widebydefault_0.0.2_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.pookjw.actionbuttonenabler</span> - الإصدار 1.0.1 - سورس: pookjw
+            <a href="https://michaelmelita1.github.io/debs/com.pookjw.actionbuttonenabler_1.0.1_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.pookjw.animatedsfsymbol</span> - الإصدار 1.0-19+debug - سورس: pookjw
+            <a href="https://michaelmelita1.github.io/debs/com.pookjw.animatedsfsymbol_1.0-19+debug_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.pookjw.standpad</span> - الإصدار 1.0 - سورس: pookjw
+            <a href="https://michaelmelita1.github.io/debs/com.pookjw.standpad_1.0_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.ps.highweather</span> - الإصدار 1.0.0-1+debug - سورس: PoomSmart
+            <a href="https://michaelmelita1.github.io/debs/com.ps.highweather_1.0.0-1+debug_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+            <span>com.ps.highweather</span> - الإصدار 1.0.0-2+debug - سورس: PoomSmart
+            <a href="https://michaelmelita1.github.io/debs/com.ps.highweather_1.0.0-2+debug_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
+        </li>
+        
+        <li>
+    
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const toolList = document.getElementById('toolList');
+    const tools = toolList.getElementsByTagName('li');
 
-    <script>
-        const searchInput = document.getElementById('searchInput');
-        const toolList = document.getElementById('toolList');
-        const tools = toolList.getElementsByTagName('li');
-
-        searchInput.addEventListener('keyup', function() {
-            const filter = searchInput.value.toLowerCase();
-            for (let i = 0; i < tools.length; i++) {
-                const toolName = tools[i].textContent || tools[i].innerText;
-                if (toolName.toLowerCase().indexOf(filter) > -1) {
-                    tools[i].style.display = "";
-                } else {
-                    tools[i].style.display = "none";
-                }
+    searchInput.addEventListener('keyup', function() {
+        const filter = searchInput.value.toLowerCase();
+        for (let i = 0; i < tools.length; i++) {
+            const toolName = tools[i].textContent || tools[i].innerText;
+            if (toolName.toLowerCase().indexOf(filter) > -1) {
+                tools[i].style.display = "";
+            } else {
+                tools[i].style.display = "none";
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>

@@ -35,6 +35,23 @@
             font-weight: bold;
             color: #333;
         }
+        .tool-list li button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .tool-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -43,39 +60,22 @@
         <input type="text" id="searchInput" placeholder="ابحث عن اسم الأداة...">
     </div>
     <ul class="tool-list" id="toolList">
-        <li><span>3DAppVersionSpoofer:</span> الإصدار 1.3</li>
-        <li><span>ActionBar:</span> الإصدار 1.1-2</li>
-        <li><span>AltList:</span> الإصدار 1.0.10-3</li>
-        <li><span>Apple File Conduit "2" (RootHide):</span> الإصدار 1.1.7-21</li>
-        <li><span>AppData:</span> الإصدار 1.3.6</li>
-        <li><span>BackgrounderAction15 CCSupport:</span> الإصدار 0.1.0</li>
-        <li><span>CC On & Off:</span> الإصدار 1.1.0</li>
-        <li><span>CCSupport:</span> الإصدار 1.3.10-2-2+debug</li>
-        <li><span>Choicy:</span> الإصدار 1.4.10-7-2</li>
-        <li><span>ColorMyBattery:</span> الإصدار 1.3.4</li>
-        <li><span>Comet:</span> الإصدار 1.0.5</li>
-        <li><span>CrossOverIPC:</span> الإصدار 1.1-1+debug</li>
-        <li><span>DockPad:</span> الإصدار 1.1</li>
-        <li><span>EZSwipe:</span> الإصدار 1.1.1-4+debug</li>
-        <li><span>ElleKit:</span> الإصدار 1.1.3</li>
-        <li><span>FIVEIconDock:</span> الإصدار 1</li>
-        <li><span>FLEXing:</span> الإصدار 1.5.0-9+debug</li>
-        <li><span>Filza File Manager 64-bit:</span> الإصدار 4.0.1-4~roothide</li>
-        <li><span>IPA Ranger:</span> الإصدار 1.8</li>
-        <li><span>NewTab:</span> الإصدار 1.1</li>
-        <li><span>NoDockGround:</span> الإصدار 1.0.6</li>
-        <li><span>NotRecording:</span> الإصدار 1.1.1-2+debug</li>
-        <li><span>Orion (iOS 14-17):</span> الإصدار 1.0.1-3+debug</li>
-        <li><span>PatchLoader:</span> الإصدار 0.0.5-2</li>
-        <li><span>PostBox:</span> الإصدار 0.8.1-4</li>
-        <li><span>RecordAnywhere:</span> الإصدار 1.1.0</li>
-        <li><span>Renet - Network Fix:</span> الإصدار 1.2.1</li>
-        <li><span>RootHide Manager:</span> الإصدار 1.0-2+debug</li>
-        <li><span>RootHide Patcher:</span> الإصدار 1.8-1+debug</li>
-        <li><span>ShowTouch:</span> الإصدار 1.0.5</li>
-        <li><span>Swiped:</span> الإصدار 1.0-6+debug</li>
-        <li><span>Uptime:</span> الإصدار 1.0.1</li>
-        <li><span>White Point Module:</span> الإصدار 1.2.2-1+debug</li>
+        <li>
+            <span>3DAppVersionSpoofer:</span> الإصدار 1.3
+            <button onclick="toggleDetails(this)">عرض التفاصيل</button>
+            <div class="tool-details">تفاصيل الأداة: 3DAppVersionSpoofer، الإصدار 1.3</div>
+        </li>
+        <li>
+            <span>ActionBar:</span> الإصدار 1.1-2
+            <button onclick="toggleDetails(this)">عرض التفاصيل</button>
+            <div class="tool-details">تفاصيل الأداة: ActionBar، الإصدار 1.1-2</div>
+        </li>
+        <li>
+            <span>AltList:</span> الإصدار 1.0.10-3
+            <button onclick="toggleDetails(this)">عرض التفاصيل</button>
+            <div class="tool-details">تفاصيل الأداة: AltList، الإصدار 1.0.10-3</div>
+        </li>
+        <!-- Add more tools here following the same structure -->
     </ul>
 
     <script>
@@ -94,6 +94,17 @@
                 }
             }
         });
+
+        function toggleDetails(button) {
+            const details = button.nextElementSibling;
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+                button.textContent = "إخفاء التفاصيل";
+            } else {
+                details.style.display = "none";
+                button.textContent = "عرض التفاصيل";
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,18 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Blocker Example</title>
+    <title>بحث عن الأرقام</title>
     <style>
-        /* إخفاء العناصر المعروفة بأنها إعلانات */
-        .ad, .ads, .advertisement, [id*="ad"], [class*="ad"] {
-            display: none !important;
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        #search-container {
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is an example page with ad-blocking.</p>
+
+    <h1>البحث عن رقم مجهول</h1>
+
+    <div id="search-container">
+        <input type="text" id="phone-number" placeholder="أدخل الرقم مع كود البلد">
+        <button onclick="searchNumber()">بحث</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function searchNumber() {
+            var phoneNumber = document.getElementById('phone-number').value;
+            var resultDiv = document.getElementById('result');
+            var dialcode = phoneNumber.slice(0, 4); // افتراض أن كود البلد هو أول 4 أرقام
+            var country_code = 'OM'; // يمكنك تعديل هذا الكود بناءً على بلدك
+
+            fetch(`https://scout.p.rapidapi.com/v1/numbers/verify?dialcode=${encodeURIComponent(dialcode)}&country_code=${country_code}`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "scout.p.rapidapi.com",
+                    "x-rapidapi-key": "8150efa2f8msh2d66ac30258dd14p1d7b0ajsn2c1ea1874bdb"
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // تحويل الرد إلى JSON
+            })
+            .then(data => {
+                // التعامل مع البيانات المستلمة من API
+                if (data.verified) {
+                    resultDiv.innerHTML = `تم التحقق من الرقم: ${phoneNumber}`;
+                } else {
+                    resultDiv.innerHTML = "لم يتم التحقق من الرقم";
+                }
+            })
+            .catch(error => {
+                // التعامل مع الأخطاء
+                console.error('There was a problem with the fetch operation:', error);
+                resultDiv.innerHTML = "حدث خطأ أثناء محاولة التحقق من الرقم";
+            });
+        }
+    </script>
+
 </body>
 </html>

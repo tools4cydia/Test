@@ -56,6 +56,8 @@
             var dialcode = phoneNumber.slice(0, 4); // افتراض أن كود البلد هو أول 4 أرقام
             var country_code = 'OM'; // يمكنك تعديل هذا الكود بناءً على بلدك
 
+            console.log("إرسال طلب للتحقق من الرقم: " + phoneNumber);
+            
             fetch(`https://scout.p.rapidapi.com/v1/numbers/verify?dialcode=${encodeURIComponent(dialcode)}&country_code=${country_code}`, {
                 "method": "GET",
                 "headers": {
@@ -64,12 +66,14 @@
                 }
             })
             .then(response => {
+                console.log("تم استلام الرد من API");
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json(); // تحويل الرد إلى JSON
             })
             .then(data => {
+                console.log("البيانات المستلمة: ", data);
                 // التعامل مع البيانات المستلمة من API
                 if (data.verified) {
                     resultDiv.innerHTML = `تم التحقق من الرقم: ${phoneNumber}`;

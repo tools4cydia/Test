@@ -15,10 +15,12 @@
             var userAgent = navigator.userAgent;
 
             if (/iPhone/.test(userAgent)) {
-                if (/iPhone13,pro/.test(userAgent)) {
-                    return "iPhone13Pro,1";
+                if (/iPhone12,1/.test(userAgent)) {
+                    return "iPhone12,1";
                 } else if (/iPhone11,8/.test(userAgent)) {
                     return "iPhone11,8";
+                } else if (/iPhone14,2/.test(userAgent)) { // iPhone 13 Pro
+                    return "iPhone14,2";
                 }
                 // يمكنك إضافة المزيد من أنماط الأجهزة هنا
             }
@@ -39,8 +41,9 @@
             var iosVersion = getIOSVersion(); // احصل على إصدار iOS تلقائيًا
 
             var jailbreakDatabase = {
-                "iPhone13,pro": { "16.4.1": "Checkra1n" },
+                "iPhone12,1": { "14.6": "Checkra1n" },
                 "iPhone11,8": { "14.6": "Unc0ver" },
+                "iPhone14,2": { "16.4.1": "No Jailbreak available" }, // iPhone 13 Pro, إصدار 16.4.1
                 // يمكنك إضافة المزيد من الأجهزة والإصدارات هنا
             };
 

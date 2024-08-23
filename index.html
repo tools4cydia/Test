@@ -51,10 +51,18 @@
 
     <script>
         function searchNumber() {
-            var phoneNumber = document.getElementById('phone-number').value;
+            var phoneNumber = document.getElementById('phone-number').value.trim();
             var resultDiv = document.getElementById('result');
-            var dialcode = phoneNumber.slice(0, 4); // افتراض أن كود البلد هو أول 4 أرقام
-            var country_code = 'OM'; // يمكنك تعديل هذا الكود بناءً على بلدك
+
+            // التحقق من أن المستخدم أدخل رقمًا
+            if (!phoneNumber) {
+                resultDiv.innerHTML = "يرجى إدخال رقم الهاتف.";
+                return;
+            }
+
+            // استخراج كود الدولة (افتراض أن المستخدم يدخل رقمًا يتضمن كود الدولة)
+            var dialcode = phoneNumber.startsWith('+') ? phoneNumber.slice(0, 4) : '+968'; // تغيير '+968' إلى كود دولتك إذا لزم الأمر
+            var country_code = 'OM'; // يجب تعديل هذا الكود بناءً على بلدك (على سبيل المثال OM لسلطنة عمان)
 
             console.log("إرسال طلب للتحقق من الرقم: " + phoneNumber);
             
@@ -66,15 +74,14 @@
                 }
             })
             .then(response => {
-                console.log("تم استلام الرد من API");
+                console.log("تم استلام الرد من API", response);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json(); // تحويل الرد إلى JSON
+                return response.json();
             })
             .then(data => {
                 console.log("البيانات المستلمة: ", data);
-                // التعامل مع البيانات المستلمة من API
                 if (data.verified) {
                     resultDiv.innerHTML = `تم التحقق من الرقم: ${phoneNumber}`;
                 } else {
@@ -82,7 +89,6 @@
                 }
             })
             .catch(error => {
-                // التعامل مع الأخطاء
                 console.error('There was a problem with the fetch operation:', error);
                 resultDiv.innerHTML = "حدث خطأ أثناء محاولة التحقق من الرقم";
             });

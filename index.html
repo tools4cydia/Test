@@ -3,97 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بحث عن الأرقام</title>
+    <title>توقيع ملف IPA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             direction: rtl;
-            text-align: center;
-            background-color: #f2f2f2;
-            padding: 20px;
+            text-align: right;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        #search-container {
-            margin-top: 50px;
-        }
-        input[type="text"] {
+        .container {
             width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea {
+            width: 100%;
             padding: 10px;
-            font-size: 18px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007BFF;
+            color: #fff;
             border: none;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #333;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <h1>البحث عن رقم مجهول</h1>
+    <div class="container">
+        <h1>توقيع ملف IPA</h1>
+        <form action="sign_ipa.php" method="post" enctype="multipart/form-data">
+            <label for="ipa_file">رفع ملف IPA:</label>
+            <input type="file" id="ipa_file" name="ipa_file" required>
 
-    <div id="search-container">
-        <input type="text" id="phone-number" placeholder="أدخل الرقم مع كود البلد">
-        <button onclick="searchNumber()">بحث</button>
+            <label for="certificate">الشهادة:</label>
+            <input type="text" id="certificate" name="certificate" required>
+
+            <label for="certificate_key">رمز الشهادة:</label>
+            <input type="text" id="certificate_key" name="certificate_key" required>
+
+            <label for="bundle_id">اسم البندل:</label>
+            <input type="text" id="bundle_id" name="bundle_id" required>
+
+            <label for="version">رقم التكرار:</label>
+            <input type="text" id="version" name="version" required>
+
+            <label for="dylib">حقن ملف dylib:</label>
+            <input type="file" id="dylib" name="dylib">
+
+            <button type="submit">توقيع الملف</button>
+        </form>
     </div>
-
-    <div id="result"></div>
-
-    <script>
-        function searchNumber() {
-            var phoneNumber = document.getElementById('phone-number').value.trim();
-            var resultDiv = document.getElementById('result');
-
-            // التحقق من أن المستخدم أدخل رقمًا
-            if (!phoneNumber) {
-                resultDiv.innerHTML = "يرجى إدخال رقم الهاتف.";
-                return;
-            }
-
-            // استخراج كود الدولة (افتراض أن المستخدم يدخل رقمًا يتضمن كود الدولة)
-            var dialcode = phoneNumber.startsWith('+') ? phoneNumber.slice(0, 4) : '+968'; // تغيير '+968' إلى كود دولتك إذا لزم الأمر
-            var country_code = 'OM'; // يجب تعديل هذا الكود بناءً على بلدك (على سبيل المثال OM لسلطنة عمان)
-
-            console.log("إرسال طلب للتحقق من الرقم: " + phoneNumber);
-            
-            fetch(`https://scout.p.rapidapi.com/v1/numbers/verify?dialcode=${encodeURIComponent(dialcode)}&country_code=${country_code}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "scout.p.rapidapi.com",
-                    "x-rapidapi-key": "VFvDoJZsuwAsr83644HPZEz0JcmUDFfF"
-                }
-            })
-            .then(response => {
-                console.log("تم استلام الرد من API", response);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("البيانات المستلمة: ", data);
-                if (data.verified) {
-                    resultDiv.innerHTML = `تم التحقق من الرقم: ${phoneNumber}`;
-                } else {
-                    resultDiv.innerHTML = "لم يتم التحقق من الرقم";
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                resultDiv.innerHTML = "حدث خطأ أثناء محاولة التحقق من الرقم";
-            });
-        }
-    </script>
 
 </body>
 </html>

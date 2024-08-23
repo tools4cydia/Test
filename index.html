@@ -3,62 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jailbreak Checker</title>
+    <title>Deb to IPA Converter</title>
 </head>
 <body>
-    <h1>Check if your device supports Jailbreak</h1>
-    <button onclick="checkDevice()">Check My Device</button>
-    <p id="result"></p>
+    <h1>Convert .deb to .ipa</h1>
+    <form id="debToIpaForm">
+        <label for="debFile">Choose .deb file:</label>
+        <input type="file" id="debFile" name="debFile" accept=".deb" required>
+        <br><br>
+        <input type="submit" value="Convert to .ipa">
+    </form>
+    <p id="status"></p>
 
     <script>
-        function getDeviceInfo() {
-            var userAgent = navigator.userAgent;
+        document.getElementById('debToIpaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('debFile');
+            const formData = new FormData();
+            formData.append('debFile', fileInput.files[0]);
 
-            if (/iPhone/.test(userAgent)) {
-                if (/iPhone14,2/.test(userAgent)) {
-                    return "iPhone14,2"; // iPhone 13 Pro
-                } else if (/iPhone12,1/.test(userAgent)) {
-                    return "iPhone12,1"; // iPhone 11
-                } else if (/iPhone11,8/.test(userAgent)) {
-                    return "iPhone11,8"; // iPhone XR
-                }
-                // يمكنك إضافة المزيد من أنماط الأجهزة هنا
-            }
-            return "Unknown Device";
-        }
+            document.getElementById('status').textContent = 'Converting... Please wait.';
 
-        function getIOSVersion() {
-            var userAgent = navigator.userAgent;
-            var versionMatch = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
-            if (versionMatch) {
-                var version = versionMatch[1] + '.' + versionMatch[2];
-                if (versionMatch[3]) {
-                    version += '.' + versionMatch[3];
-                }
-                return version;
-            }
-            return "Unknown iOS Version";
-        }
-
-        function checkDevice() {
-            var device = getDeviceInfo(); // احصل على نوع الجهاز تلقائيًا
-            var iosVersion = getIOSVersion(); // احصل على إصدار iOS تلقائيًا
-
-            var jailbreakDatabase = {
-                "iPhone14,2": { "16.4.1": "bootstrap" }, // iPhone 13 Pro
-                "iPhone12,1": { "14.6": "Checkra1n" }, // iPhone 11
-                "iPhone11,8": { "14.6": "Unc0ver" }, // iPhone XR
-                // يمكنك إضافة المزيد من الأجهزة والإصدارات هنا
-            };
-
-            var result = document.getElementById("result");
-
-            if (jailbreakDatabase[device] && jailbreakDatabase[device][iosVersion]) {
-                result.textContent = `Your device supports Jailbreak with ${jailbreakDatabase[device][iosVersion]}.`;
-            } else {
-                result.textContent = "No Jailbreak available for your device.";
-            }
-        }
+            fetch('/convert-deb-to-ipa', { // يجب أن توجه الطلب إلى خادم يقوم بالتحويل
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'converted.ipa';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.getElementById('status').textContent = 'Conversion completed!';
+            })
+            .catch(() => document.getElementById('status').textContent = 'An error occurred during conversion.');
+        });
     </script>
 </body>
 </html>

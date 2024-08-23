@@ -1,47 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deb to IPA Converter</title>
-</head>
-<body>
-    <h1>Convert .deb to .ipa</h1>
-    <form id="debToIpaForm">
-        <label for="debFile">Choose .deb file:</label>
-        <input type="file" id="debFile" name="debFile" accept=".deb" required>
-        <br><br>
-        <input type="submit" value="Convert to .ipa">
-    </form>
-    <p id="status"></p>
+import os
+import subprocess
+from flask import Flask, request, send_file
 
-    <script>
-        document.getElementById('debToIpaForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const fileInput = document.getElementById('debFile');
-            const formData = new FormData();
-            formData.append('debFile', fileInput.files[0]);
+app = Flask(__name__)
 
-            document.getElementById('status').textContent = 'Converting... Please wait.';
+@app.route('/convert-deb-to-ipa', methods=['POST'])
+def convert_deb_to_ipa():
+    deb_file = request.files['debFile']
+    deb_file.save('input.deb')
 
-            fetch('/convert-deb-to-ipa', { // يجب أن توجه الطلب إلى خادم يقوم بالتحويل
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'converted.ipa';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.getElementById('status').textContent = 'Conversion completed!';
-            })
-            .catch(() => document.getElementById('status').textContent = 'An error occurred during conversion.');
-        });
-    </script>
-</body>
-</html>
+    # فك ملف .deb
+    os.system('dpkg-deb -x input.deb temp/')
+    os.system('dpkg-deb -e input.deb temp/DEBIAN')
+
+    # إنشاء هيكل ملف .ipa
+    os.makedirs('Payload/YourApp.app', exist_ok=True)
+    os.system('mv temp/* Payload/YourApp.app/')
+
+    # ضغط الملف كـ .ipa
+    os.system('zip -r output.ipa Payload/')
+
+    # توقيع الملف
+    os.system('ldid -S Payload/YourApp.app/YourApp')
+
+    # إرسال الملف المحول
+    return send_file('output.ipa', as_attachment=True)
+
+if __name__ == "__main__":
+    app.run()

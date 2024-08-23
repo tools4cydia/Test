@@ -15,12 +15,12 @@
             var userAgent = navigator.userAgent;
 
             if (/iPhone/.test(userAgent)) {
-                if (/iPhone12,1/.test(userAgent)) {
-                    return "iPhone12,1";
+                if (/iPhone14,2/.test(userAgent)) {
+                    return "iPhone14,2"; // iPhone 13 Pro
+                } else if (/iPhone12,1/.test(userAgent)) {
+                    return "iPhone12,1"; // iPhone 11
                 } else if (/iPhone11,8/.test(userAgent)) {
-                    return "iPhone11,8";
-                } else if (/iPhone14,2/.test(userAgent)) { // iPhone 13 Pro
-                    return "iPhone14,2";
+                    return "iPhone11,8"; // iPhone XR
                 }
                 // يمكنك إضافة المزيد من أنماط الأجهزة هنا
             }
@@ -29,9 +29,13 @@
 
         function getIOSVersion() {
             var userAgent = navigator.userAgent;
-            var versionMatch = userAgent.match(/OS (\d+_\d+)/);
+            var versionMatch = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
             if (versionMatch) {
-                return versionMatch[1].replace('_', '.');
+                var version = versionMatch[1] + '.' + versionMatch[2];
+                if (versionMatch[3]) {
+                    version += '.' + versionMatch[3];
+                }
+                return version;
             }
             return "Unknown iOS Version";
         }
@@ -41,14 +45,14 @@
             var iosVersion = getIOSVersion(); // احصل على إصدار iOS تلقائيًا
 
             var jailbreakDatabase = {
-                "iPhone12,1": { "14.6": "Checkra1n" },
-                "iPhone11,8": { "14.6": "Unc0ver" },
-                "iPhone14,2": { "16.4.1": "Bootstrap" }, // iPhone 13 Pro, إصدار 16.4.1
+                "iPhone14,2": { "16.4.1": "bootstrap" }, // iPhone 13 Pro
+                "iPhone12,1": { "14.6": "Checkra1n" }, // iPhone 11
+                "iPhone11,8": { "14.6": "Unc0ver" }, // iPhone XR
                 // يمكنك إضافة المزيد من الأجهزة والإصدارات هنا
             };
 
             var result = document.getElementById("result");
-            
+
             if (jailbreakDatabase[device] && jailbreakDatabase[device][iosVersion]) {
                 result.textContent = `Your device supports Jailbreak with ${jailbreakDatabase[device][iosVersion]}.`;
             } else {

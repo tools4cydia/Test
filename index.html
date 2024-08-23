@@ -3,45 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deb to IPA Converter</title>
+    <title>Ad Blocker Example</title>
+    <style>
+        /* إخفاء العناصر المعروفة بأنها إعلانات */
+        .ad, .ads, .advertisement, [id*="ad"], [class*="ad"] {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
-    <h1>Convert .deb to .ipa</h1>
-    <form id="debToIpaForm">
-        <label for="debFile">Choose .deb file:</label>
-        <input type="file" id="debFile" name="debFile" accept=".deb" required>
-        <br><br>
-        <input type="submit" value="Convert to .ipa">
-    </form>
-    <p id="status"></p>
-
-    <script>
-        document.getElementById('debToIpaForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const fileInput = document.getElementById('debFile');
-            const formData = new FormData();
-            formData.append('debFile', fileInput.files[0]);
-
-            document.getElementById('status').textContent = 'Converting... Please wait.';
-
-            fetch('/convert-deb-to-ipa', { // يجب أن توجه الطلب إلى خادم يقوم بالتحويل
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'converted.ipa';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.getElementById('status').textContent = 'Conversion completed!';
-            })
-            .catch(() => document.getElementById('status').textContent = 'An error occurred during conversion.');
-        });
-    </script>
+    <h1>Welcome to My Website</h1>
+    <p>This is an example page with ad-blocking.</p>
 </body>
 </html>

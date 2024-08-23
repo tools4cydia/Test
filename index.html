@@ -15,8 +15,8 @@
             var userAgent = navigator.userAgent;
 
             if (/iPhone/.test(userAgent)) {
-                if (/iPhone12,1/.test(userAgent)) {
-                    return "iPhone12,1";
+                if (/iPhone13,1/.test(userAgent)) {
+                    return "iPhone13,1";
                 } else if (/iPhone11,8/.test(userAgent)) {
                     return "iPhone11,8";
                 }
@@ -39,7 +39,7 @@
             var iosVersion = getIOSVersion(); // احصل على إصدار iOS تلقائيًا
 
             var jailbreakDatabase = {
-                "iPhone12,1": { "14.6": "Checkra1n" },
+                "iPhone13,1": { "16.4.1": "Checkra1n" },
                 "iPhone11,8": { "14.6": "Unc0ver" },
                 // يمكنك إضافة المزيد من الأجهزة والإصدارات هنا
             };

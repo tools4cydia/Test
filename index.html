@@ -50,23 +50,49 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        function displayBundleId() {
+            var ipaFile = document.getElementById('ipa_file').files[0];
+            if (ipaFile) {
+                // نفترض أن هناك خدمة backend لقراءة IPA وإرجاع اسم البندل
+                fetch('get_bundle_id.php', {
+                    method: 'POST',
+                    body: new FormData(document.getElementById('ipa_form'))
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('bundle_id_display').innerText = "اسم البندل: " + data.bundle_id;
+                    } else {
+                        document.getElementById('bundle_id_display').innerText = "خطأ في قراءة اسم البندل";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('bundle_id_display').innerText = "خطأ في الاتصال بالخادم";
+                });
+            }
+        }
+    </script>
 </head>
 <body>
 
     <div class="container">
         <h1>توقيع ملف IPA</h1>
-        <form action="sign_ipa.php" method="post" enctype="multipart/form-data">
+        <form id="ipa_form" action="sign_ipa.php" method="post" enctype="multipart/form-data">
             <label for="ipa_file">رفع ملف IPA:</label>
-            <input type="file" id="ipa_file" name="ipa_file" required>
+            <input type="file" id="ipa_file" name="ipa_file" required onchange="displayBundleId()">
 
-            <label for="certificate">الشهادة:</label>
-            <input type="text" id="certificate" name="certificate" required>
+            <p id="bundle_id_display">اسم البندل سيظهر هنا بعد رفع الملف.</p>
 
-            <label for="certificate_key">رمز الشهادة:</label>
-            <input type="text" id="certificate_key" name="certificate_key" required>
+            <label for="p12_certificate">ملف الشهادة (P12):</label>
+            <input type="file" id="p12_certificate" name="p12_certificate" accept=".p12" required>
 
-            <label for="bundle_id">اسم البندل:</label>
-            <input type="text" id="bundle_id" name="bundle_id" required>
+            <label for="mobileprovision">ملف البروفايل:</label>
+            <input type="file" id="mobileprovision" name="mobileprovision" accept=".mobileprovision" required>
+
+            <label for="certificate_key">رمز الشهادة (P12 Password):</label>
+            <input type="password" id="certificate_key" name="certificate_key" required>
 
             <label for="version">رقم التكرار:</label>
             <input type="text" id="version" name="version" required>

@@ -1,337 +1,57 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة الأدوات</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            text-align: right;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .search-bar {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .search-bar input {
-            width: 60%;
-            padding: 8px 12px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        .search-bar input:focus {
-            outline: none;
-            border-color: #4CAF50;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .tool-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .tool-list li {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .tool-list li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-        }
-        .tool-list li span {
-            font-weight: bold;
-            color: #333;
-        }
-        .download-button {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 12px;
-            cursor: pointer;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-        }
-        .download-button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Jailbreak Checker</title>
 </head>
 <body>
-    <h1>قائمة الأدوات</h1>
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="ابحث عن اسم الأداة...">
-    </div>
-    <ul class="tool-list" id="toolList">
-        <li>
-            <ul class="tool-list" id="toolList">
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> ChromaHomeBarX<br>
-            <span>الإصدار:</span> 0.4<br>
-            <span>السورس:</span> BigBoss <bigboss@thebigboss.org>
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.afnanahmad.chromahomebarx_0.4_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> AutoFolderClose<br>
-            <span>الإصدار:</span> 1.1<br>
-            <span>السورس:</span> michaelmelita1
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.ikilledappl3.autofolderclose_1.1_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> 11Cam14<br>
-            <span>الإصدار:</span> 0.0.11<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.11cam14_0.0.11_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> 11Cam15<br>
-            <span>الإصدار:</span> 0.0.17<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.11cam15_0.0.17_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> BetterPad12<br>
-            <span>الإصدار:</span> 0.0.4<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.betterpad12_0.0.4_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> BetterPad14<br>
-            <span>الإصدار:</span> 0.0.1<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.betterpad14_0.0.1_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> DetectedText<br>
-            <span>الإصدار:</span> 0.0.2<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.detectedtext_0.0.2_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> DetectedText Rootless<br>
-            <span>الإصدار:</span> 0.0.2<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.detectedtext_0.0.2_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> WideByDefault<br>
-            <span>الإصدار:</span> 0.0.2<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.widebydefault_0.0.2_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> WideByDefault Rootless<br>
-            <span>الإصدار:</span> 0.0.2<br>
-            <span>السورس:</span> Michael Melita
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.michaelmelita1.widebydefault_0.0.2_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> ActionButtonEnabler<br>
-            <span>الإصدار:</span> 1.0.1<br>
-            <span>السورس:</span> pookjw
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.pookjw.actionbuttonenabler_1.0.1_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> AnimatedSFSymbol<br>
-            <span>الإصدار:</span> 1.0-19+debug<br>
-            <span>السورس:</span> pookjw
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.pookjw.animatedsfsymbol_1.0-19+debug_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> StandPad<br>
-            <span>الإصدار:</span> 1.0<br>
-            <span>السورس:</span> pookjw
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.pookjw.standpad_1.0_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> HighWeather<br>
-            <span>الإصدار:</span> 1.0.0-1+debug<br>
-            <span>السورس:</span> PoomSmart
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.ps.highweather_1.0.0-1+debug_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-        <div class="tool-info">
-            <span>اسم الأداة:</span> HighWeather<br>
-            <span>الإصدار:</span> 1.0.0-2+debug<br>
-            <span>السورس:</span> PoomSmart
-        </div>
-        <a href="https://michaelmelita1.github.io/debs/com.ps.highweather_1.0.0-2+debug_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-    </li>
-    
-    <li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化(roothide) ApexLock<br>
-        <span>الإصدار:</span> 1.2.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/233ff894-eddc-11ee-8c64-0242ac140008/com.snail.swipeunlocktext.roothide_1.2.0_iphoneos-arm64e.deb" class="download-button">تحميل .deb</a>
-</li>
+    <h1>Check if your device supports Jailbreak</h1>
+    <button onclick="checkDevice()">Check My Device</button>
+    <p id="result"></p>
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化(rootless) ApexLock<br>
-        <span>الإصدار:</span> 1.2.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/0684c1d0-eddc-11ee-a11b-0242ac140008/com.snail.swipeunlocktext.rootless_1.2.0_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-</li>
+    <script>
+        function getDeviceInfo() {
+            var userAgent = navigator.userAgent;
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化 ApexLock<br>
-        <span>الإصدار:</span> 1.2.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/d107be4a-eddb-11ee-a140-0242ac140008/com.snail.swipeunlocktext_1.2.0_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
+            if (/iPhone/.test(userAgent)) {
+                if (/iPhone12,1/.test(userAgent)) {
+                    return "iPhone12,1";
+                } else if (/iPhone11,8/.test(userAgent)) {
+                    return "iPhone11,8";
+                }
+                // يمكنك إضافة المزيد من أنماط الأجهزة هنا
+            }
+            return "Unknown Device";
+        }
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化(roothide) ApexLock<br>
-        <span>الإصدار:</span> 1.1.9<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/ec06249c-ebfc-11ee-a067-0242ac140007/com.snail.swipeunlocktext.roothide_1.1.9_iphoneos-arm64e.deb" class="download-button">تحميل .deb</a>
-</li>
+        function getIOSVersion() {
+            var userAgent = navigator.userAgent;
+            var versionMatch = userAgent.match(/OS (\d+_\d+)/);
+            if (versionMatch) {
+                return versionMatch[1].replace('_', '.');
+            }
+            return "Unknown iOS Version";
+        }
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化(rootless) ApexLock<br>
-        <span>الإصدار:</span> 1.1.9<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/7af2f854-ebe1-11ee-9e5e-0242ac140008/com.snail.swipeunlocktext.rootless_1.1.9_iphoneos-arm64.deb" class="download-button">تحميل .deb</a>
-</li>
+        function checkDevice() {
+            var device = getDeviceInfo(); // احصل على نوع الجهاز تلقائيًا
+            var iosVersion = getIOSVersion(); // احصل على إصدار iOS تلقائيًا
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 锁屏美化 ApexLock<br>
-        <span>الإصدار:</span> 1.1.9<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/5b6fc7a2-ec18-11ee-8fbe-0242ac140007/com.snail.swipeunlocktext_1.1.9_iphoneos-arm64e.deb" class="download-button">تحميل .deb</a>
-</li>
+            var jailbreakDatabase = {
+                "iPhone12,1": { "14.6": "Checkra1n" },
+                "iPhone11,8": { "14.6": "Unc0ver" },
+                // يمكنك إضافة المزيد من الأجهزة والإصدارات هنا
+            };
 
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> StatusBarLunarDate<br>
-        <span>الإصدار:</span> 1.0.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/41b85932-6553-11ed-9104-0242ac1c0007/com.snail.statusbarlunardate_1.0.0_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
-
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> Appstore++去广告<br>
-        <span>الإصدار:</span> 0.0.1<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/e6f13256-5d7a-11ed-a770-0242ac1c0007/com.snail.appstoreplusplusnoad_0.0.1_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
-
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 任意位置播放波吉 //ReachBojji<br>
-        <span>الإصدار:</span> 1.0.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/82d11f46-609d-11ec-ac93-0242ac1c0005/com.snail.reachbojji_1.0.0-1_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
-
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 3D开关APP消息通知<br>
-        <span>الإصدار:</span> 1.0.0<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/7abe16a8-4b83-11ec-b86d-0242ac170005/com.snail.easynotify_1.0.0_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
-
-<li>
-    <div class="tool-info">
-        <span>اسم الأداة:</span> 照片直接删除&无限放大<br>
-        <span>الإصدار:</span> 0.0.1<br>
-        <span>السورس:</span> repo.snailovet.com
-    </div>
-    <a href="https://repo.snailovet.com/resources/versions/6dc6fc26-4b83-11ec-8ffe-0242ac170005/com.snail.photoskipdelandinfinitezoom_0.0.1_iphoneos-arm.deb" class="download-button">تحميل .deb</a>
-</li>
-</ul>
-    
-<script>
-    const searchInput = document.getElementById('searchInput');
-    const toolList = document.getElementById('toolList');
-    const tools = toolList.getElementsByTagName('li');
-
-    searchInput.addEventListener('keyup', function() {
-        const filter = searchInput.value.toLowerCase();
-        for (let i = 0; i < tools.length; i++) {
-            const toolName = tools[i].textContent || tools[i].innerText;
-            if (toolName.toLowerCase().indexOf(filter) > -1) {
-                tools[i].style.display = "";
+            var result = document.getElementById("result");
+            
+            if (jailbreakDatabase[device] && jailbreakDatabase[device][iosVersion]) {
+                result.textContent = `Your device supports Jailbreak with ${jailbreakDatabase[device][iosVersion]}.`;
             } else {
-                tools[i].style.display = "none";
+                result.textContent = "No Jailbreak available for your device.";
             }
         }
-    });
-</script>
+    </script>
 </body>
 </html>
-
